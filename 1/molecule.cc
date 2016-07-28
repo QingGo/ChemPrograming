@@ -1,0 +1,38 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <cstdio>
+#include <cassert>
+#include "molecule.h"
+
+Molecule::Molecule(const char *filename, int q)
+{
+  charge = q;
+
+  // open filename
+  std::ifstream is(filename);
+  // assert(is.good());
+
+  // read the number of atoms from filename
+  is >> natom;
+
+  // allocate space
+  zvals = new int[natom];
+  geom = new double* [natom];
+  for(int i=0; i < natom; i++)
+    geom[i] = new double[3];
+
+  for(unsigned int i=0; i < natom; i++)
+    is >> zvals[i] >> geom[i][0] >> geom[i][1] >> geom[i][2];
+
+  is.close();
+}
+
+Molecule::~Molecule()
+{
+  // release the memory
+  delete[] zvals;
+  for(int i=0; i < natom; i++)
+    delete[] geom[i];
+  delete[] geom;
+}
