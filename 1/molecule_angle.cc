@@ -6,7 +6,7 @@
 #include <cmath>
 #include "molecule.h"
 
-
+//得到atom1到atom2的单位向量的一个坐标
 double Molecule::unit(int cart, int atom1, int atom2)
 {
 	return (geom[atom2][cart]-geom[atom1][cart])/bond(atom1,atom2);
