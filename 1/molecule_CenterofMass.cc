@@ -7,7 +7,7 @@
 #include "molecule.h"
 #include "masses.h"
 
-/*double Molecule::ZvalToMass(int zvals)
+double Molecule::ZvalToMass(int zvals)
 {
 	int Mass;
 	switch(zvals)
@@ -23,7 +23,7 @@
 		break;
 	}
 	return Mass;
-}*/
+}
 
 double Molecule::CenterOfMass(int cart)
 {
